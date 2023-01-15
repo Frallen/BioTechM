@@ -15,6 +15,7 @@
 let props = defineProps({
   user: {
     type: Object,
+    required:true
   },
 });
 let emit = defineEmits(["exit"]);

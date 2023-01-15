@@ -16,14 +16,20 @@
         <div class="table-header-item">Дата</div>
       </div>
       <div class="table-body">
-        <div class="table-body-item" v-for="item in sortedData" :key="item.id">
-          <div class="table-item">
-            {{ item.id }}
-          </div>
-          <div class="table-item">{{ item.email }}</div>
-          <div class="table-item">{{ item.amount }}</div>
-          <div class="table-item">{{ item.date }}</div>
-        </div>
+        <transition-group name="list">
+          <div
+            class="table-body-item"
+            v-for="item in sortedData"
+            :key="item.id"
+          >
+            <div class="table-item">
+              {{ item.id }}
+            </div>
+            <div class="table-item">{{ item.email }}</div>
+            <div class="table-item">{{ item.amount }}</div>
+            <div class="table-item">{{ item.date }}</div>
+          </div></transition-group
+        >
       </div>
     </div>
     <DefaultButton @click="loadMore" class="button"
@@ -86,8 +92,6 @@ let sortedData = computed(() => {
   .br(10px);
   background: #fff;
   overflow-x: auto;
-  min-width: 500px;
-  white-space: nowrap;
   &-heading {
     display: flex;
     align-items: center;
@@ -107,12 +111,19 @@ let sortedData = computed(() => {
     .select {
       min-width: 228px;
       cursor: pointer;
+      border: 1px solid #eceaea;
+      background: @light_gray;
+      .br(10px);
       @media @md {
         margin-top: 15px;
       }
     }
   }
   &-wrapper {
+    display: block;
+    overflow: auto;
+    min-width: 500px;
+    white-space: nowrap;
   }
   &-header {
     display: grid;
@@ -157,5 +168,17 @@ let sortedData = computed(() => {
     font-size: 16px;
     color: @dark_gray;
   }
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.vs__clear {
+  display: none !important;
 }
 </style>
