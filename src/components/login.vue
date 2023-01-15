@@ -84,7 +84,7 @@ let onSubmit = (data) => {
       border: 1px solid #d9d9d9;
       .br(10px);
       padding: 18px 22px;
-      color: #c1c0c0;
+      color: #000;
       font-weight: 700;
       font-size: 1.5em;
       line-height: 29px;
@@ -93,6 +93,10 @@ let onSubmit = (data) => {
         font-size: 1em;
         padding: 13px 12px;
       }
+    }
+    input::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #c1c0c0;
     }
   }
   &-item:first-child {

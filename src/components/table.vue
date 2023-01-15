@@ -91,7 +91,10 @@ let sortedData = computed(() => {
   width: 100%;
   .br(10px);
   background: #fff;
-  overflow-x: auto;
+
+  @media @md {
+    overflow-x: auto;
+  }
   &-heading {
     display: flex;
     align-items: center;
@@ -120,10 +123,12 @@ let sortedData = computed(() => {
     }
   }
   &-wrapper {
-    display: block;
-    overflow: auto;
-    min-width: 500px;
-    white-space: nowrap;
+    @media @md {
+      display: block;
+      overflow: auto;
+      min-width: 500px;
+      white-space: nowrap;
+    }
   }
   &-header {
     display: grid;
